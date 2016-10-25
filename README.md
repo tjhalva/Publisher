@@ -1,6 +1,6 @@
 # Publisher : A C++ Publisher/Subscriber Variadic Implementation
 
-The Publisher<T, Args...> class and its associated IPublisher<Args...> interface form the basis of a simple and lightweight event registration mechanism permitting the implementation of the [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern). There are no dependencies beyond C++11 or the [Boost C++ libraries.](http://www.boost.org/) 
+The Publisher<T, Args...> class and its associated IPublisher<Args...> interface form the basis of a simple and lightweight event registration mechanism permitting the implementation of the [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern). There are no dependencies beyond C++11 or the (Boost C++ libraries.)[http://www.boost.org/] 
 
 The entire class is provided inline in a single templated header, Publisher.h.  The class makes extensive usage of smart pointer semantics to manage the lifetime of subscribed listeners, and in certain cases, the ability for listeners to delete themselves in response to a publication.  
 
@@ -64,14 +64,8 @@ The subscriber builds a callback object in its constructor, and then passes it's
             // "this" created within the bound function. This ensures that the
             // bound function is either valid, or its parent shared_ptr has
             // already been destructed because the object itself no longer exists.
-            _callback =
-                std::shared_ptr<std::function<void(int, const std::string&)>>(
-                    new std::function<void(int, const std::string&)>(
-                        std::bind(
-                            &Client::handler,
-                            this,
-                            std::placeholders::_1,
-                            std::placeholders::_2)));
+			_callback =
+				tjh::make_callback(&Client::handler, this);
 
             // The shared_ptr is provided to the IPublisher interface, and the IPublisher
             // interface holds a weak_ptr that is checked for validity before the callback is
