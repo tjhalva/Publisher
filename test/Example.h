@@ -32,13 +32,7 @@ public:
         // bound function is either valid, or its parent shared_ptr has
         // already been destructed because the object itself no longer exists.
         _callback =
-            std::shared_ptr<std::function<void(int, const std::string&)>>(
-                new std::function<void(int, const std::string&)>(
-                    std::bind(
-                        &Client::handler,
-                        this,
-                        std::placeholders::_1,
-                        std::placeholders::_2)));
+            tjh::make_callback(&Client::handler, this);
 
         // The shared_ptr is provided to the IPublisher interface, and the IPublisher
         // interface holds a weak_ptr that is checked for validity before the callback is
