@@ -1,6 +1,6 @@
 # Publisher : A C++ Publisher/Subscriber Variadic Implementation
 
-The Publisher<T, Args...> class and its associated IPublisher<Args...> interface form the basis of a simple and lightweight event registration mechanism permitting the implementation of the [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern). There are no dependencies beyond C++11 or the (Boost C++ libraries.)[http://www.boost.org/] 
+The Publisher<T, Args...> class and its associated IPublisher<Args...> interface form the basis of a simple and lightweight event registration mechanism permitting the implementation of the [Observer Pattern](https://en.wikipedia.org/wiki/Observer_pattern). There are no dependencies beyond C++11 or the [Boost C++ libraries.](http://www.boost.org/) 
 
 The entire class is provided inline in a single templated header, Publisher.h.  The class makes extensive usage of smart pointer semantics to manage the lifetime of subscribed listeners, and in certain cases, the ability for listeners to delete themselves in response to a publication.  
 
